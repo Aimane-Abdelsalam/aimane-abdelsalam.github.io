@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Curriculum Vitæ — Aïmane Abdelsalam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --fg:#121316; --muted:#596074; --line:#e9ecf2; --accent:#1c4cf4;
+    --max:1250px; --headerH:70px;
+    --card-bg:#fff; --card-br:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    font-family:"Latin Modern Math","STIX Two Text",Georgia,"Times New Roman",serif;
+    font-size:17px; line-height:1.65}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ——— EN-TÊTE ÉPURÉE (plus bas + multi-ligne aérée) ——— */
+  .topbar{
+    position:sticky; top:0; z-index:1000;
+    backdrop-filter:saturate(140%) blur(10px);
+    background:rgba(255,255,255,.92);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 6px 18px rgba(17,24,39,.06);
+  }
+  .topbar .inner{
+    max-width:var(--max); margin:0 auto;
+    display:flex; align-items:center; gap:18px;
+    padding:16px 90px 14px;   /* mêmes marges que la page */
+    min-height:var(--headerH);
+  }
+  .brand{ font-weight:800; letter-spacing:0.3px; font-size:1.05rem; white-space:nowrap;       /* prénom et nom sur une seule ligne */}
+
+
+  
+  /* Barre de navigation épurée et bien alignée */
+  .nav{
+    display:flex;
+    flex-wrap:nowrap;          /* reste sur une seule ligne */
+    align-items:center;        /* alignement vertical uniforme */
+    gap:18px 22px;
+    overflow-x:auto;           /* si la fenêtre est trop étroite, défilement horizontal */
+    white-space:nowrap;
+    padding:0 8px;
+  }
+
+  .nav .brand{
+    font-weight:700; 
+    color:#000; 
+    font-size:1rem;
+    margin-right:8px;
+    letter-spacing:0.3px;
+  }
+  .nav a{
+    font-size:.95rem; padding:8px 12px; border-radius:10px; color:#2f3440;
+    border:1px solid transparent;
+  }
+  .nav a:hover{background:#f6f8fc; border-color:#eef1f7}
+  .spacer{flex:1}
+
+  .page{max-width:var(--max); margin:0 auto; padding:40px 90px 120px}
+  section{padding:30px 0; border-bottom:1px solid var(--line);
+    scroll-margin-top:calc(var(--headerH)+20px)}
+  section:last-child{border-bottom:0}
+  h1,h2,h3,h4{margin:.15em 0 .55em; font-weight:700}
+  h1{font-size:30px}
+  h2{font-size:24px; margin-top:1.35em}
+  h3{font-size:20px; margin-top:1.15em}
+  h4{font-size:18px; margin-top:.95em}
+  p{margin:.45em 0 1.15em}
+  ul{margin:.25em 0 1.15em 1.2em}
+  li{margin:.28em 0}
+  .muted{color:var(--muted)}
+  .rule{border-top:1px solid var(--line); margin:26px 0}
+
+  /* ——— En-tête de page (titre + identités + photo) ——— */
+.header{ display:grid; grid-template-columns:1fr 240px; gap:28px; align-items:start }
+.portrait{
+  width: 100%;
+  max-width: 240px;           /* cohérent avec la colonne image */
+  aspect-ratio: 3 / 4;        /* ratio portrait propre */
+  object-fit: cover;          /* recadre sans déformer */
+  border-radius: 12px;
+  border: 1px solid #e6e8ef;  /* contour léger */
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}  .card{
+    background:var(--card-bg); border:1px solid #f0f2f7; border-radius:var(--card-br);
+    padding:16px 16px; box-shadow:0 8px 24px rgba(17,24,39,.05);
+  }
+  .kv{display:grid; grid-template-columns:180px 1fr; gap:8px 14px}
+  .k{color:var(--muted)}
+
+  /* ——— Utilitaires d’espacement ——— */
+  .mb-xs{margin-bottom:.25rem}
+  .mb-sm{margin-bottom:.5rem}
+  .mb-md{margin-bottom:1rem}
+  .mb-lg{margin-bottom:1.6rem}
+
+  /* ——— Bloc identité ——— */
+  .idblock > div{margin-bottom:.45rem}
+  .idblock .softbreak{display:block; height:.35rem}
+  .idblock .hint{display:block; font-size:.92rem; color:var(--muted); line-height:1.55}
+
+  /* ——— Entrées chronologiques ——— */
+  .entry{margin:0 0 1.05rem}
+  .entry .title{margin:0 0 .25rem; line-height:1.45}
+  .entry .detail{margin:0; font-size:.95rem; color:var(--muted); line-height:1.55}
+  .entry.spaced{margin-bottom:1.35rem}
+  .entry.loose{margin-bottom:.95rem}
+
+  @media (max-width:900px){ .header{grid-template-columns:1fr} }
+  @media print{
+    .topbar{display:none}
+    .page{padding:0}
+    a{color:inherit; text-decoration:none}
+    .card{box-shadow:none; border-color:#ddd}
+  }
+  .themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 10px;
+}
+.themes .col {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+.themes ul {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+.pub { 
+  margin-bottom: 2.2em;
+}
+.pub p {
+  margin: 0.5em 0;
+}
+.abstract {
+  border-left: 3px solid #dbe3f7;
+  background: #f8faff;
+  padding: 12px 18px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  border-radius: 6px;
+}
+.keywords {
+  margin-top: 0.8em;
+  font-size: 0.9rem;
+  color: #444;
+}
+.abstract {
+  border-left: 3px solid #dbe3f7;
+  background: #f8faff;
+  padding: 12px 18px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  border-radius: 6px;
+  margin: 0.8em 0 1.5em 0;
+}
+.bib {
+  margin: 0.6em 0 1.6em 1.2em;
+  padding: 0;
+  list-style: none;
+}
+.bib li {
+  margin: 0.45em 0;
+  line-height: 1.55;
+}
+.bib a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.bib a:hover {
+  text-decoration: underline;
+}
+
+/* Alignement parfait des années et des intitulés */
+.timeline {
+  display: grid;
+  grid-template-columns: 160px 1fr; /* largeur fixe pour les dates */
+  column-gap: 16px;                /* espace entre les deux colonnes */
+  row-gap: 8px;
+  margin: 0.6em 0 1.8em;
+}
+
+.timeline > div:nth-child(odd) {
+  font-weight: 600; 
+  color: #000;
+  text-align: right;               /* aligne les dates à droite */
+  padding-right: 8px;
+}
+
+.timeline > div:nth-child(even) {
+  line-height: 1.55;
+}
+.course .meta{ 
+  margin:.3rem 0 .8rem; 
+  color:var(--muted); 
+  font-size:.95rem; 
+} 
+/* Espacement entre les encadrés de cours */
+.course {
+  margin-bottom: 1.2rem;     /* espace entre chaque bloc de cours */
+  padding: 1.1rem 1.3rem;    /* respiration interne du contenu */
+}
+
+.course:last-child {
+  margin-bottom: 0;          /* pas d’espace après le dernier */
+}
+  
+</style>
+</head>
+
+<body>
+
+<!-- EN-TÊTE -->
+<div class="topbar">
+  <div class="inner">
+    <div class="brand">Aïmane Abdelsalam</div>
+    <nav class="nav" aria-label="Sommaire">
+      <a href="#Curriculum-Vitae-detaille">Curriculum Vitæ</a>
+      <a href="#Recherche">Recherche</a>
+      <a href="#Publications">Publications</a>
+      <a href="#Enseignement">Enseignement</a>
+      <a href="#Activites">Activités</a>
+      <a href="#Debat-public">Débat public</a>
+    </nav>
+    <div class="spacer"></div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ================= IDENTITÉ ================= -->
+<section id="Identite">
+  <div class="header">
+    <div class="idblock">
+      <div class="identity-text">
+        <p>Doctorant en économie, attaché d’enseignement et de recherche (Université de Lille) </p>
+        <p>
+          Membre associé du 
+          <a href="https://clerse.univ-lille.fr/axes-de-recherche/axe-3-economies-et-societes" target="_blank" rel="noopener">
+            Clersé
+          </a> (UMR CNRS&nbsp;8019)
+        </p>
+        <p>
+          Chercheur affilié au 
+          <a href="https://www.sciencespo.fr/liepp/fr/annuaire/abdelsalam-aimane/" target="_blank" rel="noopener">
+            LIEPP (Sciences Po)
+          </a> 
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#Identite .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+#Identite .idblock {
+  flex: 1 1 60%;
+}
+
+#Identite .identity-text {
+  line-height: 1.7;
+  font-size: 1.1rem; /* même taille pour toutes les lignes */
+  color: #222;
+}
+
+#Identite .identity-text p {
+  margin: 6px 0;
+}
+
+#Identite a {
+  color: #004b8d; /* bleu universitaire sobre */
+  text-decoration: none;
+}
+
+#Identite a:hover {
+  text-decoration: underline;
+}
+
+#Identite .portrait-wrapper {
+  flex: 0 0 160px;
+  text-align: right;
+}
+
+#Identite .portrait {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  #Identite .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #Identite .portrait-wrapper {
+    margin-top: 16px;
+    text-align: center;
+  }
+  #Identite .idblock {
+    flex: 1 1 100%;
+  }
+}
+</style>
+</section>
+
+  <!-- ================= CURRICULUM VITAE ================= -->
+  <section id="Curriculum-Vitae-detaille">
+    <h2>Curriculum Vitæ détaillé</h2>
+
+<h3>Parcours </h3>
+<div class="timeline">
+  <div><strong>2025</strong></div>
+  <div> Chercheur affilié au <a href="https://www.sciencespo.fr/liepp/fr/recherche/axes/evaluation-politiques-socio-fiscales/" target="_blank">
+             Laboratoire interdisciplinaire d'évaluation des politiques publiques</a> (LIEPP Sciences Po).
+    <br> Membre de l’axe « Évaluation des politiques socio-fiscales ». </div>
+  
+  <div><strong>2025</strong></div>
+  <div>Attaché temporaire d’enseignement et de recherche (Université de Lille, Clersé).</div>
+
+  <div><strong>2021–2025</strong></div>
+  <div>Doctorant contractuel avec mission d’enseignement (ED SESAM n°73, Clersé).</div>
+
+  <div><strong>2021</strong></div>
+  <div>Chercheur stagiaire en économie au Clersé – <em>Mesure, cadres théoriques et effets macroéconomiques des politiques d’aides aux entreprises (étude pour l’Institut de recherches économiques et sociales)</em>.</div>
+
+  <div><strong>2016–2020</strong></div>
+  <div>Engagé réserviste à l’Armée de Terre (41e Régiment de Transmissions, Douai).</div>
+</div>
+
+<h3>Formation</h3>
+<div class="timeline">
+  <div><strong>2021–2025</strong></div>
+  <div>Doctorat de sciences économiques, Université de Lille.</div>
+
+  <div><strong>2020–2021</strong></div>
+  <div>Master 2 Économie publique, Université de Lille, Mention Très Bien, <em>Major</em>.</div>
+
+  <div><strong>2016–2021</strong></div>
+  <div>Master 2 Affaires publiques, Sciences Po Lille, Mention Très Bien. Dont mobilité internationale à l’École de Gouvernance et d’Économie (Rabat, Maroc).</div>
+  <div><strong>2016</strong></div>
+  <div> Baccalauréat Économique et social, Section européenne anglais, Mention Très Bien. <div>
+    <a href="https://www.nord.gouv.fr/contenu/telechargement/35373/249265/file/160615_dp_concours_national_r%C3%A9sistance_d%C3%A9portation.pdf" target="_blank" rel="noopener">
+      Mention nationale et premier prix de l’Académie de Lille du CNRD.</a>
+ <div>
+    </div>
+</div>
+  </section>
+
+  <!-- ================= RECHERCHE ================= -->
+<section id="Recherche">
+  <h2>Recherche</h2>
+  <p>Mes travaux portent sur l'interventionnisme fiscal et budgtétaire - quantification, construction d'indicateurs, lecture et modélisation macroéconomique.</p>
+
+  <h4>Thèmes de recherche</h3>
+  <div class="themes">
+    <div class="col">
+      <strong>Généraux</strong>
+      <ul>
+        <li>Économie publique</li>
+        <li>Macroéconomie</li>
+        <li>Comptabilité nationale</li>
+        <li>Économie internationale</li>
+        <li>Économie politique</li>
+      </ul>
+    </div>
+    <div class="col">
+      <strong>Spécifiques</strong>
+      <ul>
+        <li>Dépenses publiques <em>lato sensu</em></li>
+        <li>Finances publiques</li>
+        <li>Politiques socio-fiscales</li>
+        <li>État social</li>
+        <li>Zone euro</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>Méthodologies</h3>
+  <div class="themes">
+    <div class="col">
+      <ul>
+        <li>Analyses statistiques (<em>R</em>, Excel)</li>
+        <li>Analyse textuelle automatisée et vectorisation sémantique (BoW, TF-IDF)</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul>
+        <li>Modélisation économétrique (VAR)</li>
+        <li>Modélisation <em>stock-flow consistent (SFC)</em> sous <em>R</em></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+<section id="Publications">
+  <h2>Publications</h2>
+
+  <style>
+    /* Cartes publications : réutilise .card, ajoute quelques détails */
+    .pubcard { margin: 14px 0; }
+    .pubcard .title { margin: 0 0 .35rem; line-height: 1.45; }
+    .pubcard .meta  { margin: 0; color: var(--muted); font-size: .95rem; }
+    .pubcard .venue { display:inline-block; margin-top:.35rem; }
+    .pubcard .status{
+      display:inline-block; margin-left:8px; padding:2px 8px; border:1px solid #d0d7de;
+      border-radius:999px; background:#f6f8fa; font-weight:600; font-size:.92rem;
+    }
+    .pubcard a{ color: var(--accent); text-decoration:none; }
+    .pubcard a:hover{ text-decoration:underline; }
+  </style>
+
+  <!-- ===== 1) Articles dans revues à comité de lecture ===== -->
+  <h3>Articles dans revues à comité de lecture</h3>
+
+  <!-- REP -->  
+  <div class="card pubcard">
+    <h4 class="title">
+      « La place des dépenses fiscales et socio-fiscales dans le système des prélèvements et dépenses publics en France depuis 1979 : une base de données inédite »
+    </h4>
+    <p class="meta">
+      Aïmane Abdelsalam, Anne-Laure Delatte, Alexis Guillaume — 2025
+    </p>
+     <p class="meta venue">
+  <strong><em>
+    <a href="https://shs.cairn.info/revue-revue-deconomie-politique-2025-3-page-489?lang=fr" target="_blank" rel="noopener">
+      Revue d’Économie Politique
+    </a>
+  </em></strong>
+  <span class="status">Rang A HCERES</span>
+    </p>
+    </div>
+    
+
+  <!-- CJE (en évaluation)
+  <div class="card pubcard">
+    <h4 class="title">
+      « Resurgence of fiscal interventionism: a longitudinal analysis of public aid to businesses in France since 1949 »
+    </h4>
+    <p class="meta">
+      Aïmane Abdelsalam, Léo Vigny — 2025
+    </p>
+    <p class="meta venue">
+      <strong><em>
+        <a href="https://academic.oup.com/cje" target="_blank" rel="noopener">
+          Cambridge Journal of Economics
+        </a>
+      </em></strong>
+    </p>
+  </div>
+
+  <!-- ===== 2) Rapports de recherche ===== -->
+  <h3>Rapports de recherche</h3>
+
+  <div class="card pubcard">
+    <h4 class="title">
+      Mesure, théories et effets macroéconomiques des aides publiques aux entreprises françaises
+    </h4>
+    <p class="meta">
+      Aïmane Abdelsalam, Florian Botte, Laurent Cordonnier, Thomas Dallery, Vincent Duwicquet, Jordan Melmiès, Simon Nadel, Franck Van de Velde, Loïck Tange — 2022, (octobre)
+    </p>
+    <p class="meta venue">
+      <strong><em>
+        <a href="https://hal.science/hal-03980080v1" target="_blank" rel="noopener">
+          Rapport de recherche IRES (HAL)
+        </a>
+      </em></strong>
+    </p>
+  </div>
+
+  <!-- ===== 3) Working papers (light peer review) ===== -->
+  <h3>Working papers <span style="font-weight:normal;">(light peer review)</span></h3>
+
+  <div class="card pubcard">
+    <h4 class="title">
+      Resurgence of fiscal interventionism: a longitudinal analysis of public aid to businesses in France since 1949
+    </h4>
+    <p class="meta">
+      Aïmane Abdelsalam, Léo Vigny — 2025, n°177 (27 mars)
+    </p>
+    <p class="meta venue">
+      <strong><em>
+        <a href="https://sciencespo.hal.science/hal-05000473v1" target="_blank" rel="noopener">
+          Sciences Po LIEPP Working Paper
+        </a>
+      </em></strong>
+    </p>
+  </div>
+
+  <div class="card pubcard">
+    <h4 class="title">
+      Dépenses et prélèvements publics : une lecture macroéconomique des inflexions de l’intervention publique fiscale et budgétaire
+    </h4>
+    <p class="meta">
+      Aïmane Abdelsalam — 2024, n°167 (14 juillet)
+    </p>
+    <p class="meta venue">
+      <strong><em>
+        <a href="https://sciencespo.hal.science/hal-04643775v1" target="_blank" rel="noopener">
+          Sciences Po LIEPP Working Paper
+        </a>
+      </em></strong>
+    </p>
+  </div>
+
+  <div class="card pubcard">
+    <h4 class="title">
+      Répartition des recettes et dépenses publiques entre ménages et entreprises depuis 1949 : nouvelles données
+    </h4>
+    <p class="meta">
+      Aïmane Abdelsalam, Anne-Laure Delatte — 2023, n°142 (10 mars)
+    </p>
+    <p class="meta venue">
+      <strong><em>
+        <a href="https://sciencespo.hal.science/hal-04020073" target="_blank" rel="noopener">
+          Sciences Po LIEPP Working Paper
+        </a>
+      </em></strong>
+    </p>
+  </div>
+
+  <!-- ===== 4) Travaux en cours ===== -->
+<h3>Travaux en cours</h3>
+
+<div class="card pubcard">
+  <h4 class="title">Competitiveness at what cost? Macroeconomic implications of supply-side fiscal reconfigurations</h4>
+  <p class="meta">Aïmane Abdelsalam, Loïck Tange — 2025  <span class="muted"></span></p>
+</div>
+
+<div class="card pubcard">
+  <h4 class="title">Government spending, tax effort and private activity: evidence from EU members</h4>
+  <p class="meta">Aïmane Abdelsalam, Yoan Wallois — 2025  <span class="muted"></span></p>
+</div>
+
+<div class="card pubcard">
+  <h4 class="title">Fiscal and growth regimes in the eurozone</h4>
+  <p class="meta">Aïmane Abdelsalam, Léo Vigny — 2026 <span class="muted"></span></p>
+</div>
+
+<div class="card pubcard">
+  <h4 class="title">The endometabolic dynamics of public support for businesses in France</h4>
+  <p class="meta">Aïmane Abdelsalam, Benjamin Bürbaumer, Nicolas Pinsard — 2026 <span class="muted"></span></p>
+</div>
+
+<div class="card pubcard">
+  <h4 class="title">Beyond public spending: constructing an extended COFOG for budgetary, fiscal and social-fiscal expenditures worldwide</h4>
+  <p class="meta">Aïmane Abdelsalam, Anne-Laure Delatte, Alexis Guillaume — 2026 <span class="muted"></span></p>
+</div>
+
+  <div class="card pubcard">
+  <h4 class="title">A historical political economy of fiscal policy in France (1945–2025)</h4>
+  <p class="meta">Aïmane Abdelsalam, Basile Clerc — 2026  <span class="muted"></span></p>
+</div>
+
+</section>
+    <!-- ================= ENSEIGNEMENT ================= -->
+<section id="Enseignement">
+  <h2>Enseignement</h2>
+
+  <!-- L1 — Macroéconomie : Politiques conjoncturelles -->
+  <div class="card course">
+    <h4>
+      Licence 1 — 
+      <a href="https://drive.google.com/file/d/1TNO53OzBsEjagammqbKEVgZ4jxKqyoYG/view?usp=drive_link" target="_blank" rel="noopener">
+        <strong>Macroéconomie : politiques conjoncturelles</strong> 
+      </a>
+    </h4>
+    <p>
+      Ce cours vise à familiariser les étudiant·es de première année avec les grands équilibres économiques à court terme et le rôle de l’intervention publique. L’objectif est d’outiller les étudiant·es à la compréhension des mécanismes élémentaires de la conjoncture, de l’impact des politiques publiques et des premiers modèles macroéconomiques formalisés.
+    </p>
+    <ul>
+      <li>Chômage, croissance et rôle de l’État (salaire minimum, écarts de revenu, fondements des politiques économiques).</li>
+      <li>Comptabilité nationale (PIB, valeur ajoutée, revenu national, PIB réel/nominal, ouverture).</li>
+      <li>Modèle keynésien simple (revenu-dépense, consommation/épargne, multiplicateur, équilibre épargne-investissement, solde budgétaire).</li>
+      <li>Modèle IS-LM (interaction taux d’intérêt/revenu, relance budgétaire, effet d’éviction, paramètres exogènes/endogènes).</li>
+    </ul>
+  </div>
+
+    <!-- L1 — Statistiques descriptives -->  
+  <div class="card course">
+    <h4>
+      Licence 1 — 
+        <strong>Statistiques descriptives</strong> 
+    </h4>
+    <p>
+      Introduction complète aux méthodes de statistique descriptive appliquée à l’économie, avec de nombreux exercices quantitatifs.
+    </p>
+    <ul>
+      <li>Distributions et représentations (tableaux, histogrammes, fonctions de répartition, diagrammes).</li>
+      <li>Tendance centrale et dispersion (moyenne, médiane, variance, écart-type, coefficients, moyennes pondérées).</li>
+      <li>Inégalités et quantiles (déciles, quartiles, courbes de Lorenz, indicateurs revenus/patrimoine).</li>
+      <li>Effets de structure et indices (décompositions, Laspeyres/Paasche, indices de prix et de quantités).</li>
+    </ul>
+  </div>
+
+  <!-- L2 — Macroéconomie monétaire et financière -->
+  <div class="card course">
+    <h4>
+      Licence 2 — 
+      <a href="https://drive.google.com/file/d/1wTaBS_62JN2s_0Lrz7Mpw973btHAJz1Q/view?usp=drive_link" target="_blank" rel="noopener">
+        <strong>Macroéconomie monétaire et financière</strong> 
+      </a>
+    </h4>
+    <p>
+      Ce cours approfondit les mécanismes de la création monétaire, de la politique monétaire et des instabilités financières contemporaines, en articulant théorie macroéconomique et événements récents.
+    </p>
+    <ul>
+      <li>Nature et rôle de la monnaie (confiance, base monétaire &amp; agrégats).</li>
+      <li>Création monétaire et rôle des banques (bilans, monnaie endogène, épargne/déficit public/patrimoine, multiplicateur, Banque centrale).</li>
+      <li>Inflation &amp; politique monétaire (épisode 2021–2023, transmission, indices de prix, taux de change, courbe de Phillips).</li>
+      <li>Marchés financiers et cycles (lien finance/économie réelle, effets des taux sur l’investissement).</li>
+      <li>Instabilité financière (SVB, livre égyptienne, crise 2008) et paradoxe de la tranquillité (Minsky).</li>
+    </ul>
+  </div>
+
+  <!-- L3 — Fondamentaux de l’analyse économique -->
+  <div class="card course">
+    <h4>Licence 3 — <strong> Fondamentaux de l’analyse économique</strong></h4>
+    <p>
+      Initiation aux fondamentaux de la macroéconomie contemporaine à partir d’une approche pluraliste et appliquée : débats économiques, outils de base et articulation théorie/enjeux actuels.
+    </p>
+  </div>
+
+
+</section>
+
+  <!-- ================= ACTIVITES SCIENTIFIQUES ================= -->
+<section id="Activites">
+  <h2>Activités scientifiques et communications</h2>
+  <!-- ===== Affiliation à des réseaux académiques nationaux ===== -->
+  <h3>Affiliation à un réseau académique national </h3>
+  <p>
+    <strong>2025</strong> — <a href="https://www.sciencespo.fr/liepp/fr/recherche/axes/evaluation-politiques-socio-fiscales/" target="_blank" rel="noopener">
+      Laboratoire Interdisciplinaire d’Évaluation des Politiques Publiques  </a> (LIEPP Sciences Po) - Axe de recherche «&nbsp;Évaluation des politiques socio-fiscales&nbsp;».  
+
+  <div class="abstract">
+    <p>
+      Ce groupe de recherche s’intéresse principalement à l’identification et à l’évaluation de l’impact des différentes mesures fiscales et des exonérations de cotisations sociales utilisées à des fins de politique sociale et d’emploi. Tout en conservant son intérêt initial pour les politiques socio-fiscales, le groupe a progressivement élargi son champ d’analyse pour adopter une perspective plus large sur la protection sociale et l’emploi, permettant une évaluation critique des instruments utilisés — incitations fiscales, dépenses budgétaires directes, ou dispositions réglementaires.
+    </p>
+    <p>
+      Les travaux actuels et futurs de l’axe s’articulent autour de trois grands chantiers&nbsp;:
+      <ul>
+        <li>Liens entre fiscalité et redistribution&nbsp;;</li>
+        <li>Études d’impact des dispositifs socio-fiscaux dans différents secteurs (en France)&nbsp;;</li>
+        <li>Recours aux dispositifs socio-fiscaux comme instrument de réforme de la protection sociale.</li>
+      </ul>
+    Les activités de recherche récentes ont été structurées autour de 4 domaines principaux : 1. les dépenses fiscales et les régimes socio-fiscaux ; 2. la pauvreté et les politiques de lutte contre la pauvreté ; 3. la protection sociale et le travail ; 4. les politiques éco-sociales
+    </p>
+  </div>
+
+<!-- ===== Organisation d’événements réguliers et ponctuels ===== -->
+<section id="Evenements">
+  <h3>Organisation d’événements réguliers et ponctuels <span class="muted"></span></h3>
+
+  <style>
+  .events {
+    display: grid;
+    gap: 18px;
+    margin: 12px 0 28px 0;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* colonne dates + contenu */
+    align-items: start;
+    gap: 20px;
+  }
+
+  .event .date {
+    font-weight: 700;
+    text-align: left; /* alignement à gauche */
+    white-space: nowrap;
+    color: #222;
+    padding-top: 4px;
+  }
+
+  .event .content p {
+    margin: 0 0 6px 0;
+    line-height: 1.6;
+  }
+
+  .event a {
+    color: #004b8d;
+    text-decoration: none;
+  }
+
+  .event a:hover {
+    text-decoration: underline;
+  }
+
+  /* Encadré harmonisé avec les publications */
+  .abstract {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    padding: 16px;
+    margin: 10px 0 0 0;
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .abstract p { margin: 0; }
+
+  /* Mobile : empile date au-dessus */
+  @media (max-width: 640px) {
+    .event {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .event .date {
+      text-align: left;
+      margin-bottom: 2px;
+    }
+  }
+  </style>
+
+  <div class="events">
+
+    <!-- SEPOL 2025 -->
+    <div class="event">
+      <div class="date">2025</div>
+      <div class="content">
+        <p> Membre du comité d'organisation du 
+          <a href="https://clerse.univ-lille.fr/detail-event/seminaire-sepol-axe-3-20" target="_blank" rel="noopener">
+            Séminaire d’Économie Politique Lillois (SEPOL)
+          </a>intégré dans l’axe de recherche   <a href="  https://clerse.univ-lille.fr/axes-de-recherche/axe-3-economies-et-societes" target="_blank" rel="noopener">
+            Economies et sociétés </a> du Clersé.
+        </p>
+        <div class="abstract">
+          <p>
+            Le SEPOL rassemble des travaux portant sur le fonctionnement des systèmes économiques contemporains dans leurs dimensions sociales et écologiques. Ses travaux visent à mettre au jour les constructions institutionnelles et les régulations politiques à la base des conventions de richesse, et à interroger les formes de développement et d’innovation en lien avec les contextes institutionnels, locaux et globaux. Sur le plan normatif, le séminaire questionne la légitimité et la durabilité des systèmes économiques actuels.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Juin 2026 -->
+    <div class="event">
+      <div class="date">Juin 2026</div>
+      <div class="content">
+        <p>Membre du comité d’organisation du deuxième colloque international postkeynésien de Lille, <em>The End of Economic Globalization: Towards a Return to National Self-Sufficiency?</em> </p>
+      </div>
+    </div>
+
+    <!-- Mai 2026 -->
+    <div class="event">
+      <div class="date">Mai 2026</div>
+      <div class="content">
+        <p>Organisation de la journée d’études «&nbsp;Politiques des revenus à l’épreuve du triptyque inflation, alimentation et temps de travail&nbsp;» (SEPOL, Clersé).</p>
+      </div>
+    </div>
+
+    <!-- Avril 2026 -->
+    <div class="event">
+      <div class="date">Avril 2026</div>
+      <div class="content">
+        <p>Organisation de la journée d’études «&nbsp;Industries et recomposition des relations internationales&nbsp;» (SEPOL, Clersé).</p>
+      </div>
+    </div>
+
+    <!-- Déc. 2023 -->
+    <div class="event">
+      <div class="date">Décembre 2023</div>
+      <div class="content">
+        <p>Membre du comité d’organisation du premier colloque international postkeynésien de Lille, <em>Economic Possibilities for our Grandchildren: 90 Years Later</em>.</p>
+      </div>
+    </div>
+
+    <!-- Nov. 2023 -->
+    <div class="event">
+      <div class="date">Novembre 2023</div>
+      <div class="content">
+        <p>Atelier sur la structure et la composition de la base Eurostat (Clersé).</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <h3>Communications <span class="muted"></span></h2>
+
+  <!-- ===== Colloques et conférences internationaux ===== -->
+  <h4>Conférences internationales</h3>
+  <ul class="bib">
+    <li>
+      <strong></strong> Aïmane Abdelsalam et Loïck Tange. (2023). 
+      « Compulsory levies, competitiveness and adjustment through public spending in the eurozone : rethinking internal devaluation policies ». 
+      <em>Lille Post-Keynesian Conference</em>, France, décembre.
+    </li>
+    <li>
+      <strong></strong> Aïmane Abdelsalam et Anne-Laure Delatte. (2023). 
+      « Distribution of public revenues and expenditures between households and firms in France since 1949 : new data ». 
+      <em>22nd Journées Louis-André Gérard-Varet (LAGV), Public Economics Conference</em>, Aix-en-Provence, France, juin.
+    </li>
+  </ul>
+
+  <!-- ===== Séminaires internationaux ===== -->
+  <h4>Séminaires internationaux</h3>
+  <ul class="bib">
+    <li>
+      <strong></strong> Aïmane Abdelsalam et Anne-Laure Delatte. (2023). 
+      « Anatomy of Public Aid to Companies ». 
+      <em>Seminar of the Europe Department</em>, International Monetary Fund, Washington, D.C., novembre.
+    </li>
+  </ul>
+
+  <!-- ===== Séminaires nationaux ===== -->
+  <h4>Séminaires nationaux</h3>
+  <ul class="bib">
+    <li>
+      <strong></strong> Aïmane Abdelsalam. (2023). 
+      « Aides aux entreprises, dépenses publiques et conséquences macroéconomiques ». 
+      <em>Séminaire du Laboratoire interdisciplinaire d’évaluation des politiques publiques (LIEPP)</em>, Sciences Po Paris, France, décembre.
+    </li>
+  </ul>
+
+  <!-- ===== Séminaires d’équipe ===== -->
+  <h4>Séminaires d’équipe</h3>
+  <ul class="bib">
+    <li>
+      <strong></strong> Aïmane Abdelsalam. (2024). 
+      « Fiscal devaluation, adjustment through public spending and compulsory levies in the eurozone ». 
+      <em>Séminaire Économie et Société (ESR²)</em>, Université Rennes 2, France, mai.
+    </li>
+    <li>
+      <strong></strong> Aïmane Abdelsalam. (2023). 
+      « Dévaluation(s) fiscale(s) : compréhension à partir d’une décomposition keynésienne de la dépense publique articulée avec les prélèvements obligatoires depuis 1949 ». 
+      <em>Séminaire d’économie politique du Centre d’Économie de la Sorbonne (CES)</em>, Paris, France, septembre.
+    </li>
+    <li>
+      <strong></strong> Aïmane Abdelsalam. (2023). 
+      « Développement économique territorial et politiques d’aides aux entreprises ». 
+      <em>Cycle de formation HER (Hautes Études Régionales)</em>, Sciences Po Lille, mars.
+    </li>
+  </ul>
+</section>
+
+  <!-- ================= DÉBAT PUBLIC ================= -->
+<section id="Debat-public">
+  <h2> Débat public </h2>
+  <ul class="bib">
+   <!-- <li> <strong>7.</strong> Tribune dans <em>Le Monde</em> 
+      <a href="#" target="_blank" rel="noopener"> « Les politiques de compétitivité : un ersatz de dévaluation à lourd coût budgétaire » 
+  </a>. 
+  </li>
+    <li>
+      <strong>6.</strong> Billet pour le 
+      <a href="https://www.blog-afse.fr/liste-billet-par-auteurs" target="_blank" rel="noopener">Blog de l’AFSE</a> 
+      (Association française de science économique) consacré à l’analyse des 
+      <a href="#" target="_blank" rel="noopener">dépenses fiscales et socio-fiscales en France depuis 1979</a>.
+    </li> -->
+    <li>
+      <strong>5.</strong>  <strong>Assemblée nationale</strong> (juillet 2025), Commission des finances,
+      <a href="#" target="_blank" rel="noopener"> Mission d’information relative au coût, à la légitimité et à l’efficacité des dispositifs d’aides publiques aux entreprises
+      </a> (travaux sur la quantification des aides publiques aux entreprises).
+    </li>
+    <li>
+      <strong>4.</strong> <strong>Assemblée nationale</strong> (février 2025), Commission des affaires économiques,  <a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">
+        Note sur la perte de souveraineté industrielle et l’atteinte aux industries stratégiques
+      </a> (travaux sur l'effort fiscal des entreprises en France et dans la zone euro - avec Anne-Laure Delatte).
+    </li>
+    <li>
+      <strong>3.</strong>  <strong>Sénat</strong> (février 2025), 
+      <a href="https://videos.senat.fr/video.5053575_67ad99f3b7d50.aides-publiques-aux-entreprises--audition-de-l-ires?timecode=1327280" target="_blank" rel="noopener">
+        Commission d’enquête sénatoriale sur l’utilisation des aides publiques aux grandes entreprises et à leurs sous-traitants
+      </a> (travaux sur la quantification des aides publiques aux entreprises).
+    </li>
+    <li>
+      <strong>2.</strong>  <strong>Alternatives Économiques</strong> (février 2025), <a href="https://www.alternatives-economiques.fr/taxation-entreprises-francaises-diminue-deficit-commercial-augmen/00114014" target="_blank" rel="noopener">
+        Infographie « La taxation des entreprises françaises diminue… le déficit commercial augmente »
+      </a> (calcul de l’écart de taxation nette des entreprises françaises par rapport aux autres pays européens - avec Anne-Laure Delatte).
+    </li>
+    <li>
+      <strong>1.</strong>  <strong>Oxfam France</strong> (décembre 2023), 
+      <a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">
+        Rapport consacré à la politique du logement
+      </a> (données concernant le coût des dépenses fiscales liés au logement en France sur la dernière décennie).
+    </li>
+  </ul>
+
+</section>
+
+</div>
+
+</body>
+</html>
