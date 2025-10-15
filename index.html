@@ -19,8 +19,10 @@
   <meta name="keywords" content="Aïmane Abdelsalam, économiste, économie publique, macroéconomie, finances publiques, Université de Lille, Sciences Po, LIEPP, Clersé, recherche, thèse, fiscalité, dépenses publiques">
 
   <!-- Police -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;500;700&display=swap" rel="stylesheet">
-
+    
   <!-- Données structurées : Person -->
 <script type="application/ld+json">
 {
@@ -254,41 +256,85 @@
 }
 
 /* ===== Débat public (encapsulation) ===== */
-.debats-card{
-  padding: 12px 14px;
+.debats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; /* espace vertical entre les cartes */
+  margin-top: 10px;
+}
+
+.deb-card {
+  background: #fff;
   border: 1px solid #eef1f7;
   border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(17,24,39,.04);
-  background: #fff;
-  margin: 10px 0 24px 0;
-}
-
-/* Liste compacte, très lisible */
-.debats{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.debats li{
-  margin: 0.55em 0;
+  box-shadow: 0 2px 10px rgba(17,24,39,.04);
+  padding: 12px 16px;
   line-height: 1.6;
-}
-.debats li + li{ 
-  border-top: 1px dashed #eceff5;   /* séparation très légère */
-  padding-top: .6em;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-/* Liens et emphase */
-.debats a{
+.deb-card:hover {
+  box-shadow: 0 4px 18px rgba(17,24,39,.07);
+  transform: translateY(-1px);
+}
+
+.deb-card a {
   color: #004b8d;
   text-decoration: none;
 }
-.debats a:hover{ text-decoration: underline; }
-  
+
+.deb-card a:hover {
+  text-decoration: underline;
+}
+
+.deb-card .comment {
+  color: #555;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .deb-card {
+    padding: 10px 12px;
+  }
+}
+
+    /* Mobile */
+/* 1) Taille de police fluide (évite le texte trop gros/petit) */
+html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
+
+/* 2) Marges latérales plus petites sur mobile */
+@media (max-width: 700px) {
+  .page { padding: 28px 18px 80px; }
+}
+
+/* 3) En-tête identité : espace un peu réduit sur petit écran */
+@media (max-width: 700px) {
+  .header { gap: 16px; }
+}
+
+/* 4) Photo : largeur max adaptée + dimensions explicites pour CLS */
+#Identite .portrait {
+  width: 100%;
+  max-width: 220px;           /* déjà présent, on garde */
+  height: auto;
+  aspect-ratio: 3 / 4;        /* limite les sauts de mise en page */
+}
+
+/* 5) Fallback performance : désactive le blur si l'appareil rame */
+@supports not (backdrop-filter: blur(10px)) {
+  .topbar { background:#fff; }
+}
+ 
 </style>
 </head>
 
 <body>
+
+<h1 style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+  Aïmane Abdelsalam — économiste (économie publique, macroéconomie, finances publiques)
+</h1>
 
 <!-- EN-TÊTE -->
 <div class="topbar">
@@ -313,8 +359,11 @@
   <div class="header">
     
     <div class="portrait-wrapper">
-      <img src="assets/photo.png" alt="Portrait d’Aïmane Abdelsalam" class="portrait">
-    </div>
+      <img src="assets/photo.png"
+     alt="Portrait d’Aïmane Abdelsalam"
+     class="portrait"
+     width="220" height="293">
+      </div>
 
     <div class="idblock">
       <div class="identity-text">
@@ -932,62 +981,70 @@
   </ul>
 </section>
 
-<!-- ================= DÉBAT PUBLIC ================= -->
+
+  <!-- ================= DÉBAT PUBLIC ================= -->
 <section id="Debat-public">
   <h2>Débat public</h2>
 
-  <div class="card debats-card">
-    <ul class="debats">
+  <div class="debats-grid">
 
-<!--
-      <li>
-        <strong>Le Monde</strong> (juillet 2025) — Tribune :
-        <a href="#" target="_blank" rel="noopener">
-          « Les politiques de compétitivité : un ersatz de dévaluation à lourd coût budgétaire »
-        </a> 
-      </li>
+    <!-- ===== Article et billet à venir =====
+    <div class="deb-card">
+      <strong>Le Monde</strong> (juillet 2025) — Tribune :
+      <a href="#" target="_blank" rel="noopener">
+        « Les politiques de compétitivité : un ersatz de dévaluation à lourd coût budgétaire »
+      </a><br>
+    </div>
 
-      <li>
-        <strong>Blog de l’AFSE</strong> (Association française de science économique) —
-        <a href="https://www.blog-afse.fr/liste-billet-par-auteurs" target="_blank" rel="noopener">
-          Billet consacré à l’analyse des dépenses fiscales et socio-fiscales en France depuis 1979
-        </a> 
-      </li>
---> 
-      <li>
-        <strong>Assemblée nationale</strong> (juillet 2025) — Commission des finances.
-        <a href="#" target="_blank" rel="noopener">Mission d’information relative au coût, à la légitimité et à l’efficacité des dispositifs d’aides publiques aux entreprises</a>
-        (travaux sur la quantification du soutien public aux entreprises).
-      </li>
+    <div class="deb-card">
+      <strong>Blog de l’AFSE</strong> (Association française de science économique) —
+      <a href="https://www.blog-afse.fr/liste-billet-par-auteurs" target="_blank" rel="noopener">
+        Billet consacré à l’analyse des dépenses fiscales et socio-fiscales en France depuis 1979
+      </a><br>
+    </div>
+    ===== -->
 
-      <li>
-        <strong>Assemblée nationale</strong> (février 2025) — Commission des affaires économiques.
-        <a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">« La perte de souveraineté industrielle et l'atteinte aux industries stratégiques »</a>
-        (travaux sur l'effort fiscal des entreprises en France et dans la zone euro — avec Anne-Laure Delatte).
-      </li>
+    <div class="deb-card">
+      <strong>Assemblée nationale</strong> (juillet 2025) — Commission des finances.<br>
+      <a href="#" target="_blank" rel="noopener">
+        Mission d’information relative au coût, à la légitimité et à l’efficacité des dispositifs d’aides publiques aux entreprises
+      </a><br>
+      <span class="comment">(travaux sur la quantification du soutien public aux entreprises)</span>
+    </div>
 
-      <li>
-        <strong>Sénat</strong> (février 2025) —
-        <a href="https://videos.senat.fr/video.5053575_67ad99f3b7d50.aides-publiques-aux-entreprises--audition-de-l-ires?timecode=1327280" target="_blank" rel="noopener">Commission d’enquête sénatoriale sur l’utilisation des aides publiques aux grandes entreprises et à leurs sous-traitants</a>
-        (travaux sur la quantification du soutien public aux entreprises).
-      </li>
+    <div class="deb-card">
+      <strong>Assemblée nationale</strong> (février 2025) — Commission des affaires économiques.<br>
+      <a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">
+        « La perte de souveraineté industrielle et l'atteinte aux industries stratégiques »
+      </a><br>
+      <span class="comment">(travaux sur l'effort fiscal des entreprises en France et dans la zone euro — avec Anne-Laure Delatte)</span>
+    </div>
 
-      <li>
-        <strong>Alternatives Économiques</strong> (février 2025) —
-        <a href="https://www.alternatives-economiques.fr/taxation-entreprises-francaises-diminue-deficit-commercial-augmen/00114014" target="_blank" rel="noopener">Infographie « La taxation des entreprises françaises diminue… le déficit commercial augmente »</a>
-        (calcul de l’écart de taxation nette des entreprises françaises par rapport aux autres pays européens — avec Anne-Laure Delatte).
-      </li>
+    <div class="deb-card">
+      <strong>Sénat</strong> (février 2025) — 
+      <a href="https://videos.senat.fr/video.5053575_67ad99f3b7d50.aides-publiques-aux-entreprises--audition-de-l-ires?timecode=1327280" target="_blank" rel="noopener">
+        Commission d’enquête sénatoriale sur l’utilisation des aides publiques aux grandes entreprises et à leurs sous-traitants
+      </a><br>
+      <span class="comment">(travaux sur la quantification du soutien public aux entreprises)</span>
+    </div>
 
-      <li>
-        <strong>Oxfam France</strong> (décembre 2023) —
-        <a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">Rapport consacré à la politique du logement</a>
-        (données concernant le coût des dépenses fiscales liées au logement en France sur la dernière décennie).
-      </li>
-    </ul>
+    <div class="deb-card">
+      <strong>Alternatives Économiques</strong> (février 2025).<br>
+      <a href="https://www.alternatives-economiques.fr/taxation-entreprises-francaises-diminue-deficit-commercial-augmen/00114014" target="_blank" rel="noopener">
+        Infographie « La taxation des entreprises françaises diminue… le déficit commercial augmente »
+      </a><br>
+      <span class="comment">(calcul de l’écart de taxation nette des entreprises françaises par rapport aux autres pays européens — avec Anne-Laure Delatte)</span>
+    </div>
+
+    <div class="deb-card">
+      <strong>Oxfam France</strong> (décembre 2023).<br>
+      <a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">
+        Rapport consacré à la politique du logement
+      </a><br>
+      <span class="comment">(données concernant le coût des dépenses fiscales liées au logement en France sur la dernière décennie)</span>
+    </div>
+
   </div>
 </section>
-
-</div> 
-  
 </body>
 </html>
