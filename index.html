@@ -56,9 +56,10 @@
       --card-bg:#fff; --card-br:14px;
     }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
-    font-family:"Latin Modern Math","STIX Two Text",Georgia,"Times New Roman",serif;
-    font-size:17px; line-height:1.65}
+ html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+  font-family:"Latin Modern Math","STIX Two Text",Georgia,"Times New Roman",serif;
+  line-height:1.65}
+body{font-size:1rem;}
   a{color:var(--accent); text-decoration:none}
   a:hover{text-decoration:underline}
 
@@ -182,14 +183,6 @@
 .pub p {
   margin: 0.5em 0;
 }
-.abstract {
-  border-left: 3px solid #dbe3f7;
-  background: #f8faff;
-  padding: 12px 18px;
-  font-size: 0.93rem;
-  line-height: 1.55;
-  border-radius: 6px;
-}
 .keywords {
   margin-top: 0.8em;
   font-size: 0.9rem;
@@ -294,13 +287,6 @@
 }
 
 /* Mobile */
-@media (max-width: 640px) {
-  .deb-card {
-    padding: 10px 12px;
-  }
-}
-
-    /* Mobile */
 /* 1) Taille de police fluide (évite le texte trop gros/petit) */
 html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
 
@@ -326,6 +312,96 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
 @supports not (backdrop-filter: blur(10px)) {
   .topbar { background:#fff; }
 }
+
+/* Scroll doux global */
+html { scroll-behavior: smooth; }
+
+/* Hauteur logique de la topbar sur mobile -> corrige l'ancre qui tombe trop bas */
+@media (max-width: 700px) {
+  :root { --headerH: 90px; }
+}
+
+/* Cartes publications : réutilise .card, ajoute quelques détails */
+    .pubcard { margin: 14px 0; }
+    .pubcard .title { margin: 0 0 .35rem; line-height: 1.45; }
+    .pubcard .meta  { margin: 0; color: var(--muted); font-size: .95rem; }
+    .pubcard .venue { display:inline-block; margin-top:.35rem; }
+    .pubcard .status{
+      display:inline-block; margin-left:8px; padding:2px 8px; border:1px solid #d0d7de;
+      border-radius:999px; background:#f6f8fa; font-weight:600; font-size:.92rem;
+    }
+    .pubcard a{ color: var(--accent); text-decoration:none; }
+    .pubcard a:hover{ text-decoration:underline; }
+    
+  .events {
+    display: grid;
+    gap: 18px;
+    margin: 12px 0 28px 0;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* colonne dates + contenu */
+    align-items: start;
+    gap: 20px;
+  }
+
+  .event .date {
+    font-weight: 700;
+    text-align: left; /* alignement à gauche */
+    white-space: nowrap;
+    color: #222;
+    padding-top: 4px;
+  }
+
+  .event .content p {
+    margin: 0 0 6px 0;
+    line-height: 1.6;
+  }
+
+  .event a {
+    color: #004b8d;
+    text-decoration: none;
+  }
+
+  .event a:hover {
+    text-decoration: underline;
+  }
+
+  /* Encadré harmonisé avec les publications */
+/* Encadré des événements (évite le conflit avec .abstract) */
+.event-abstract {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 10px 0 0 0;
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.event-abstract p { margin: 0; }
+
+  /* Mobile : empile date au-dessus */
+  @media (max-width: 640px) {
+    .event {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .event .date {
+      text-align: left;
+      margin-bottom: 2px;
+    }
+  }
+
+
+
+
+
+
+
+    
  
 </style>
 </head>
@@ -382,77 +458,6 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
   </div>
 </section>
 
-<style>
-/* ===== Bloc Identité ===== */
-#Identite .header {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px; /* espace entre la photo et le texte */
-}
-
-#Identite .portrait-wrapper {
-  order: -1;              /* place la photo avant le texte */
-  flex: 0 0 220px;        /* largeur fixe de la colonne photo */
-  text-align: left;       /* aligne la photo à gauche */
-}
-
-#Identite .portrait {
-  width: 100%;
-  max-width: 220px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-#Identite .idblock {
-  flex: 1 1 auto;
-}
-
-#Identite .identity-text {
-  line-height: 1.7;
-  font-size: 1.1rem;
-  color: #222;
-}
-
-#Identite .identity-text p {
-  margin: 6px 0;
-}
-
-#Identite a {
-  color: #004b8d;
-  text-decoration: none;
-}
-
-#Identite a:hover {
-  text-decoration: underline;
-}
-
-/* ===== Version mobile ===== */
-@media (max-width: 700px) {
-  #Identite .header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  #Identite .portrait-wrapper {
-    order: -1;
-    flex: 0 0 auto;
-    margin-bottom: 10px;
-  }
-  #Identite .portrait {
-    max-width: 220px;
-  }
-}
-
-/* Scroll doux + meilleur offset sous barre sticky */
-html { scroll-behavior: smooth; }
-
-@media (max-width: 700px) {
-  :root { --headerH: 90px; } /* topbar un peu plus haute sur mobile */
-  section { scroll-margin-top: calc(var(--headerH) + 20px); }
-}
-  
-</style>
   <!-- ================= CURRICULUM VITAE ================= -->
   <section id="Curriculum-Vitae-detaille">
     <h2>Curriculum Vitæ détaillé</h2>
@@ -489,12 +494,15 @@ html { scroll-behavior: smooth; }
   <div>Master 2 Affaires publiques, Sciences Po Lille, Mention Très Bien<em> (dont mobilité internationale à l’École de Gouvernance et d’Économie de Rabat, Maroc).</em> </div>
 
   <div><strong>2016</strong></div>
-  <div> Baccalauréat Économique et social, Section européenne anglais, Mention Très Bien. <div>
-    <a href="https://www.nord.gouv.fr/contenu/telechargement/35373/249265/file/160615_dp_concours_national_r%C3%A9sistance_d%C3%A9portation.pdf" target="_blank" rel="noopener">
-      Mention nationale et premier prix de l’Académie de Lille du CNRD.</a>
- <div>
-    </div>
+<div>
+  Baccalauréat Économique et social, Section européenne anglais, Mention Très Bien.
+  <br>
+  <a href="https://www.nord.gouv.fr/contenu/telechargement/35373/249265/file/160615_dp_concours_national_r%C3%A9sistance_d%C3%A9portation.pdf" target="_blank" rel="noopener">
+    Mention nationale et premier prix de l’Académie de Lille du CNRD.
+  </a>
 </div>
+  </div>
+
   </section>
 
   <!-- ================= RECHERCHE ================= -->
@@ -502,7 +510,7 @@ html { scroll-behavior: smooth; }
   <h2>Recherche</h2>
   <p>Mes travaux portent sur l'interventionnisme fiscal et budgtétaire - quantification, construction d'indicateurs, lectures et modélisations macroéconomiques.</p>
 
-  <h4>Thèmes de recherche</h3>
+  <h4>Thèmes de recherche</h4>
   <div class="themes">
     <div class="col">
       <strong>Généraux</strong>
@@ -526,7 +534,7 @@ html { scroll-behavior: smooth; }
     </div>
   </div>
 
-  <h4>Méthodologies</h3>
+  <h4>Méthodologies</h4>
   <div class="themes">
     <div class="col">
       <ul>
@@ -546,21 +554,7 @@ html { scroll-behavior: smooth; }
   <!-- ================= PUBLICATIONS ================= -->
 <section id="Publications">
   <h2>Publications</h2>
-
-  <style>
-    /* Cartes publications : réutilise .card, ajoute quelques détails */
-    .pubcard { margin: 14px 0; }
-    .pubcard .title { margin: 0 0 .35rem; line-height: 1.45; }
-    .pubcard .meta  { margin: 0; color: var(--muted); font-size: .95rem; }
-    .pubcard .venue { display:inline-block; margin-top:.35rem; }
-    .pubcard .status{
-      display:inline-block; margin-left:8px; padding:2px 8px; border:1px solid #d0d7de;
-      border-radius:999px; background:#f6f8fa; font-weight:600; font-size:.92rem;
-    }
-    .pubcard a{ color: var(--accent); text-decoration:none; }
-    .pubcard a:hover{ text-decoration:underline; }
-  </style>
-
+  
   <!-- ===== 1) Articles dans revues à comité de lecture ===== -->
   <h3>Articles dans revues à comité de lecture</h3>
 
@@ -599,6 +593,7 @@ html { scroll-behavior: smooth; }
       </em></strong>
     </p>
   </div>
+ -->
 
   <!-- ===== 2) Rapports de recherche ===== -->
   <h3>Rapports de recherche</h3>
@@ -784,7 +779,7 @@ html { scroll-behavior: smooth; }
     <strong>2025</strong> — <a href="https://www.sciencespo.fr/liepp/fr/recherche/axes/evaluation-politiques-socio-fiscales/" target="_blank" rel="noopener">
       Laboratoire Interdisciplinaire d’Évaluation des Politiques Publiques  </a> (LIEPP Sciences Po) - Axe de recherche «&nbsp;Évaluation des politiques socio-fiscales&nbsp;».  
 
-  <div class="abstract">
+ <div class="event-abstract">
     <p>
       Ce groupe de recherche s’intéresse principalement à l’identification et à l’évaluation de l’impact des différentes mesures fiscales et des exonérations de cotisations sociales utilisées à des fins de politique sociale et d’emploi. Tout en conservant son intérêt initial pour les politiques socio-fiscales, le groupe a progressivement élargi son champ d’analyse pour adopter une perspective plus large sur la protection sociale et l’emploi, permettant une évaluation critique des instruments utilisés — incitations fiscales, dépenses budgétaires directes, ou dispositions réglementaires.
     </p>
@@ -803,70 +798,6 @@ html { scroll-behavior: smooth; }
 <div id="Evenements">
   <h3>Organisation d’événements réguliers et ponctuels <span class="muted"></span></h3>
 
-  <style>
-  .events {
-    display: grid;
-    gap: 18px;
-    margin: 12px 0 28px 0;
-  }
-
-  .event {
-    display: grid;
-    grid-template-columns: 120px 1fr; /* colonne dates + contenu */
-    align-items: start;
-    gap: 20px;
-  }
-
-  .event .date {
-    font-weight: 700;
-    text-align: left; /* alignement à gauche */
-    white-space: nowrap;
-    color: #222;
-    padding-top: 4px;
-  }
-
-  .event .content p {
-    margin: 0 0 6px 0;
-    line-height: 1.6;
-  }
-
-  .event a {
-    color: #004b8d;
-    text-decoration: none;
-  }
-
-  .event a:hover {
-    text-decoration: underline;
-  }
-
-  /* Encadré harmonisé avec les publications */
-  .abstract {
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    border-radius: 6px;
-    padding: 16px;
-    margin: 10px 0 0 0;
-    text-align: justify;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .abstract p { margin: 0; }
-
-  /* Mobile : empile date au-dessus */
-  @media (max-width: 640px) {
-    .event {
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-    .event .date {
-      text-align: left;
-      margin-bottom: 2px;
-    }
-  }
-  </style>
-
   <div class="events">
 
     <!-- SEPOL 2025 -->
@@ -876,10 +807,10 @@ html { scroll-behavior: smooth; }
         <p> Membre du comité d'organisation du 
           <a href="https://clerse.univ-lille.fr/detail-event/seminaire-sepol-axe-3-20" target="_blank" rel="noopener">
             Séminaire d’Économie Politique Lillois (SEPOL)
-          </a>intégré dans l’axe de recherche   <a href="  https://clerse.univ-lille.fr/axes-de-recherche/axe-3-economies-et-societes" target="_blank" rel="noopener">
+          </a>intégré dans l’axe de recherche   <a href="https://clerse.univ-lille.fr/axes-de-recherche/axe-3-economies-et-societes" target="_blank" rel="noopener">
             Economies et sociétés </a> du Clersé.
         </p>
-        <div class="abstract">
+       <div class="event-abstract">
           <p>
             Le SEPOL rassemble des travaux portant sur le fonctionnement des systèmes économiques contemporains dans leurs dimensions sociales et écologiques. Ses travaux visent à mettre au jour les constructions institutionnelles et les régulations politiques à la base des conventions de richesse, et à interroger les formes de développement et d’innovation en lien avec les contextes institutionnels, locaux et globaux. Sur le plan normatif, le séminaire questionne la légitimité et la durabilité des systèmes économiques actuels.
           </p>
@@ -985,7 +916,7 @@ html { scroll-behavior: smooth; }
       <em>Cycle de formation HER (Hautes Études Régionales)</em>, Sciences Po Lille, mars.
     </li>
   </ul>
-</div></section>
+</section>
 
   <!-- ================= DÉBAT PUBLIC ================= -->
 <section id="Debat-public">
@@ -998,14 +929,14 @@ html { scroll-behavior: smooth; }
       <strong>Le Monde</strong> (juillet 2025) — Tribune :
       <a href="#" target="_blank" rel="noopener">
         « Les politiques de compétitivité : un ersatz de dévaluation à lourd coût budgétaire »
-      </a><br>
+      </a>
     </div>
 
     <div class="deb-card">
       <strong>Blog de l’AFSE</strong> (Association française de science économique) —
       <a href="https://www.blog-afse.fr/liste-billet-par-auteurs" target="_blank" rel="noopener">
         Billet consacré à l’analyse des dépenses fiscales et socio-fiscales en France depuis 1979
-      </a><br>
+      </a>
     </div>
     ===== -->
 
@@ -1027,7 +958,7 @@ html { scroll-behavior: smooth; }
       <strong>Sénat</strong> (février 2025) — 
       <a href="https://videos.senat.fr/video.5053575_67ad99f3b7d50.aides-publiques-aux-entreprises--audition-de-l-ires?timecode=1327280" target="_blank" rel="noopener">
         Commission d’enquête sénatoriale sur l’utilisation des aides publiques aux grandes entreprises et à leurs sous-traitants
-      </a><br>
+      </a>
       <span class="comment">Travaux sur la quantification du soutien public aux entreprises</span>
     </div>
 
