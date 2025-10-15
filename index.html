@@ -252,6 +252,27 @@
 .course:last-child {
   margin-bottom: 0;          /* pas d’espace après le dernier */
 }
+
+ /* ===== Débat public ===== */
+  .debats li {
+    margin-bottom: 0.9em;   /* espace fin entre les items */
+    line-height: 1.6;
+  }
+
+  .debats a {
+    color: #004b8d;
+    text-decoration: none;
+  }
+
+  .debats a:hover {
+    text-decoration: underline;
+  }
+
+  .debats .comment {
+    color: #555;
+    font-size: 0.95rem;
+    font-style: italic;
+  }
   
 </style>
 </head>
@@ -904,45 +925,64 @@
 <section id="Debat-public">
   <h2> Débat public </h2>
   <ul class="bib">
-   <!-- <li> <strong>7.</strong> Tribune dans <em>Le Monde</em> 
-      <a href="#" target="_blank" rel="noopener"> « Les politiques de compétitivité : un ersatz de dévaluation à lourd coût budgétaire » 
-  </a>. 
-  </li>
-    <li>
-      <strong>6.</strong> Billet pour le 
-      <a href="https://www.blog-afse.fr/liste-billet-par-auteurs" target="_blank" rel="noopener">Blog de l’AFSE</a> 
-      (Association française de science économique) consacré à l’analyse des 
-      <a href="#" target="_blank" rel="noopener">dépenses fiscales et socio-fiscales en France depuis 1979</a>.
-    </li> -->
-    <li>
-      <strong>5.</strong>  <strong>Assemblée nationale</strong> (juillet 2025), Commission des finances,
-      <a href="#" target="_blank" rel="noopener"> Mission d’information relative au coût, à la légitimité et à l’efficacité des dispositifs d’aides publiques aux entreprises
-      </a> (travaux sur la quantification du soutien public aux entreprises).
-    </li>
-    <li>
-      <strong>4.</strong> <strong>Assemblée nationale</strong> (février 2025), Commission des affaires économiques,  <a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">
-        Note sur la perte de souveraineté industrielle et l’atteinte aux industries stratégiques
-      </a> (travaux sur l'effort fiscal des entreprises en France et dans la zone euro - avec Anne-Laure Delatte).
-    </li>
-    <li>
-      <strong>3.</strong>  <strong>Sénat</strong> (février 2025), 
-      <a href="https://videos.senat.fr/video.5053575_67ad99f3b7d50.aides-publiques-aux-entreprises--audition-de-l-ires?timecode=1327280" target="_blank" rel="noopener">
-        Commission d’enquête sénatoriale sur l’utilisation des aides publiques aux grandes entreprises et à leurs sous-traitants
-      </a> (travaux sur la quantification du soutien public aux entreprises).
-    </li>
-    <li>
-      <strong>2.</strong>  <strong>Alternatives Économiques</strong> (février 2025), <a href="https://www.alternatives-economiques.fr/taxation-entreprises-francaises-diminue-deficit-commercial-augmen/00114014" target="_blank" rel="noopener">
-        Infographie « La taxation des entreprises françaises diminue… le déficit commercial augmente »
-      </a> (calcul de l’écart de taxation nette des entreprises françaises par rapport aux autres pays européens - avec Anne-Laure Delatte).
-    </li>
-    <li>
-      <strong>1.</strong>  <strong>Oxfam France</strong> (décembre 2023), 
-      <a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">
-        Rapport consacré à la politique du logement
-      </a> (données concernant le coût des dépenses fiscales liés au logement en France sur la dernière décennie).
-    </li>
-  </ul>
+<!--
 
+  <li>
+    <strong>Le Monde</strong> (juillet 2025) — Tribune.<br>
+    <a href="#" target="_blank" rel="noopener">
+      « Les politiques de compétitivité : un ersatz de dévaluation à lourd coût budgétaire »
+    </a><br>
+  </li>
+
+  <li>
+    <strong>Blog de l’AFSE</strong> (Association française de science économique).<br>
+    <a href="https://www.blog-afse.fr/liste-billet-par-auteurs" target="_blank" rel="noopener">
+      Billet consacré à l’analyse des dépenses fiscales et socio-fiscales en France depuis 1979
+    </a><br>
+  </li>
+
+-->
+    
+  <li>
+    <strong>Assemblée nationale</strong> (juillet 2025) — Commission des finances.<br>
+    <a href="#" target="_blank" rel="noopener">
+      Mission d’information relative au coût, à la légitimité et à l’efficacité des dispositifs d’aides publiques aux entreprises
+    </a><br>
+    <span class="comment">(Travaux sur la quantification du soutien public aux entreprises.)</span>
+  </li>
+
+  <li>
+    <strong>Assemblée nationale</strong> (février 2025) — Commission des affaires économiques.<br>
+    <a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">
+      Note sur la perte de souveraineté industrielle et l’atteinte aux industries stratégiques
+    </a><br>
+    <span class="comment">(Travaux sur l'effort fiscal des entreprises en France et dans la zone euro — avec Anne-Laure Delatte.)</span>
+  </li>
+
+  <li>
+    <strong>Sénat</strong> (février 2025) — 
+    <a href="https://videos.senat.fr/video.5053575_67ad99f3b7d50.aides-publiques-aux-entreprises--audition-de-l-ires?timecode=1327280" target="_blank" rel="noopener">
+      Commission d’enquête sénatoriale sur l’utilisation des aides publiques aux grandes entreprises et à leurs sous-traitants
+    </a><br>
+    <span class="comment">(Travaux sur la quantification du soutien public aux entreprises.)</span>
+  </li>
+
+  <li>
+    <strong>Alternatives Économiques</strong> (février 2025).<br>
+    <a href="https://www.alternatives-economiques.fr/taxation-entreprises-francaises-diminue-deficit-commercial-augmen/00114014" target="_blank" rel="noopener">
+      Infographie « La taxation des entreprises françaises diminue… le déficit commercial augmente »
+    </a><br>
+    <span class="comment">(Calcul de l’écart de taxation nette des entreprises françaises par rapport aux autres pays européens — avec Anne-Laure Delatte.)</span>
+  </li>
+
+  <li>
+    <strong>Oxfam France</strong> (décembre 2023).<br>
+    <a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">
+      Rapport consacré à la politique du logement
+    </a><br>
+    <span class="comment">(Données concernant le coût des dépenses fiscales liées au logement en France sur la dernière décennie.)</span>
+  </li>
+</ul>
 </section>
 
 </div>
