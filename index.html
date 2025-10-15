@@ -207,10 +207,69 @@
     }
     .timeline > div:nth-child(even){ line-height:1.55 }
 
-    /* Cours */
-    .course .meta{ margin:.3rem 0 .8rem; color:var(--muted); font-size:.95rem }
-    .course{ margin-bottom:1.2rem; padding:1.1rem 1.3rem }
-    .course:last-child{ margin-bottom:0 }
+    /* === Publications : cartes plus sobres/compactes === */
+    .pubcard{
+      padding: 10px 12px;
+      border: 1px solid #eef1f7;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(17,24,39,.03);
+      margin: 0;
+    }
+    .pubcard + .pubcard{
+      margin-top: 16px;               /* espace entre deux publications */
+    }
+    .pubcard .title{
+      margin: 0 0 .25rem;
+      line-height: 1.4;
+      font-weight: 700;
+      color: #111;
+    }
+    .pubcard .meta{
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .pubcard .venue{
+      display: inline-block;
+      margin-top: .25rem;
+    }
+    .pubcard .status{
+      margin-left: 8px;
+      padding: 1px 7px;
+      font-size: .88rem;
+      border-radius: 999px;
+      border: 1px solid #dde3ee;
+      background: #f7f9fc;
+    }
+
+    /* === Enseignement : cartes plus fines et listes compactes === */
+    .card.course{
+      padding: 12px 14px;
+      border: 1px solid #eef1f7;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(17,24,39,.03);
+      background: #fff;
+      margin-bottom: 16px;            /* espace entre cartes */
+    }
+    .card.course h4{
+      margin: 0 0 .35rem;
+      line-height: 1.35;
+    }
+    .card.course p{
+      margin: .2rem 0 .6rem;
+    }
+    .card.course ul{
+      margin: .2rem 0 .2rem 1.1rem;
+    }
+    .card.course li{
+      margin: .15rem 0;
+    }
+    .card.course .meta{
+      margin:.2rem 0 .6rem;
+      color:var(--muted);
+      font-size:.95rem;
+    }
 
     /* Débat public */
     .debats-grid{ display:flex; flex-direction:column; gap:14px; margin-top:10px }
@@ -807,7 +866,8 @@
     <div class="deb-card">
       <strong>Assemblée nationale</strong> (juillet 2025) — Commission des finances.<a href="#" target="_blank" rel="noopener">
         Mission d’information relative au coût, à la légitimité et à l’efficacité des dispositifs d’aides publiques aux entreprises.
-      </a>
+      </a>  
+      <br>
       <span class="comment">Travaux sur la quantification du soutien public aux entreprises</span>
     </div>
 
@@ -815,14 +875,16 @@
       <strong>Assemblée nationale</strong> (février 2025) — Commission des affaires économiques.<a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">
         « La perte de souveraineté industrielle et l'atteinte aux industries stratégiques »
       </a>
+        <br>
       <span class="comment">Travaux sur l'effort fiscal des entreprises en France et dans la zone euro — avec Anne-Laure Delatte</span>
     </div>
 
     <div class="deb-card">
       <strong>Sénat</strong> (février 2025) — 
       <a href="https://videos.senat.fr/video.5053575_67ad99f3b7d50.aides-publiques-aux-entreprises--audition-de-l-ires?timecode=1327280" target="_blank" rel="noopener">
-        Commission d’enquête sénatoriale sur l’utilisation des aides publiques aux grandes entreprises et à leurs sous-traitants.
+        Commission d’enquête sur l’utilisation des aides aux grandes entreprises et à leurs sous-traitants.
       </a>
+        <br>
       <span class="comment">Travaux sur la quantification du soutien public aux entreprises</span>
     </div>
 
@@ -837,6 +899,7 @@
       <strong>Oxfam France</strong> (décembre 2023).<a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">
         Rapport consacré à la politique du logement.
       </a>
+        <br>
       <span class="comment">Données concernant le coût des dépenses fiscales liées au logement en France sur la dernière décennie</span>
     </div>
 
