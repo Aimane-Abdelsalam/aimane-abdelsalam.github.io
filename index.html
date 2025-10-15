@@ -443,9 +443,16 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
     max-width: 220px;
   }
 }
-</style>
-    </section>
 
+/* Scroll doux + meilleur offset sous barre sticky */
+html { scroll-behavior: smooth; }
+
+@media (max-width: 700px) {
+  :root { --headerH: 90px; } /* topbar un peu plus haute sur mobile */
+  section { scroll-margin-top: calc(var(--headerH) + 20px); }
+}
+  
+</style>
   <!-- ================= CURRICULUM VITAE ================= -->
   <section id="Curriculum-Vitae-detaille">
     <h2>Curriculum Vitæ détaillé</h2>
@@ -793,7 +800,7 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
   </div>
 
 <!-- ===== Organisation d’événements réguliers et ponctuels ===== -->
-<section id="Evenements">
+<div id="Evenements">
   <h3>Organisation d’événements réguliers et ponctuels <span class="muted"></span></h3>
 
   <style>
@@ -922,11 +929,10 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
 
   </div>
 
-
-  <h3>Communications <span class="muted"></span></h2>
+<h3>Communications <span class="muted"></span></h3>
 
   <!-- ===== Colloques et conférences internationaux ===== -->
-  <h4>Conférences internationales</h3>
+ <h4>Conférences internationales</h4>
   <ul class="bib">
     <li>
       <strong></strong> Aïmane Abdelsalam et Loïck Tange. (2023). 
@@ -941,7 +947,7 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
   </ul>
 
   <!-- ===== Séminaires internationaux ===== -->
-  <h4>Séminaires internationaux</h3>
+  <h4>Séminaires internationaux</h4>
   <ul class="bib">
     <li>
       <strong></strong> Aïmane Abdelsalam et Anne-Laure Delatte. (2023). 
@@ -951,7 +957,7 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
   </ul>
 
   <!-- ===== Séminaires nationaux ===== -->
-  <h4>Séminaires nationaux</h3>
+  <h4>Séminaires nationaux</h4>
   <ul class="bib">
     <li>
       <strong></strong> Aïmane Abdelsalam. (2023). 
@@ -961,7 +967,7 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
   </ul>
 
   <!-- ===== Séminaires d’équipe ===== -->
-  <h4>Séminaires d’équipe</h3>
+ <h4>Séminaires d’équipe</h4>
   <ul class="bib">
     <li>
       <strong></strong> Aïmane Abdelsalam. (2024). 
@@ -979,8 +985,7 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
       <em>Cycle de formation HER (Hautes Études Régionales)</em>, Sciences Po Lille, mars.
     </li>
   </ul>
-</section>
-
+</div></section>
 
   <!-- ================= DÉBAT PUBLIC ================= -->
 <section id="Debat-public">
@@ -1005,18 +1010,16 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
     ===== -->
 
     <div class="deb-card">
-      <strong>Assemblée nationale</strong> (juillet 2025) — Commission des finances.<br>
-      <a href="#" target="_blank" rel="noopener">
+      <strong>Assemblée nationale</strong> (juillet 2025) — Commission des finances.<a href="#" target="_blank" rel="noopener">
         Mission d’information relative au coût, à la légitimité et à l’efficacité des dispositifs d’aides publiques aux entreprises
-      </a><br>
+      </a>
       <span class="comment">Travaux sur la quantification du soutien public aux entreprises</span>
     </div>
 
     <div class="deb-card">
-      <strong>Assemblée nationale</strong> (février 2025) — Commission des affaires économiques.<br>
-      <a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">
+      <strong>Assemblée nationale</strong> (février 2025) — Commission des affaires économiques.<a href="https://www.assemblee-nationale.fr/dyn/17/documents/cion-eco/l17n106947641_document.pdf" target="_blank" rel="noopener">
         « La perte de souveraineté industrielle et l'atteinte aux industries stratégiques »
-      </a><br>
+      </a>
       <span class="comment">Travaux sur l'effort fiscal des entreprises en France et dans la zone euro — avec Anne-Laure Delatte</span>
     </div>
 
@@ -1029,18 +1032,16 @@ html { font-size: clamp(15px, 1.6vw + 12px, 17px); }
     </div>
 
     <div class="deb-card">
-      <strong>Alternatives Économiques</strong> (février 2025).<br>
-      <a href="https://www.alternatives-economiques.fr/taxation-entreprises-francaises-diminue-deficit-commercial-augmen/00114014" target="_blank" rel="noopener">
+      <strong>Alternatives Économiques</strong> (février 2025).<a href="https://www.alternatives-economiques.fr/taxation-entreprises-francaises-diminue-deficit-commercial-augmen/00114014" target="_blank" rel="noopener">
         Infographie « La taxation des entreprises françaises diminue… le déficit commercial augmente »
-      </a><br>
+      </a>
       <span class="comment">Calcul de l’écart de taxation nette des entreprises françaises par rapport aux autres pays européens — avec Anne-Laure Delatte</span>
     </div>
 
     <div class="deb-card">
-      <strong>Oxfam France</strong> (décembre 2023).<br>
-      <a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">
+      <strong>Oxfam France</strong> (décembre 2023).<a href="https://www.oxfamfrance.org/app/uploads/2023/12/RAPPORTLOGEMENT-OXFAMFRANCE-2023-COMPLET.pdf" target="_blank" rel="noopener">
         Rapport consacré à la politique du logement
-      </a><br>
+      </a>
       <span class="comment">Données concernant le coût des dépenses fiscales liées au logement en France sur la dernière décennie</span>
     </div>
 
