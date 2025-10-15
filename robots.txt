@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aimane-abdelsalam.github.io/sitemap.xml
