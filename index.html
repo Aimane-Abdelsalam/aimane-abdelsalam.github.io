@@ -71,17 +71,38 @@
   }
   </script>
 
-  <!-- Empêche l'ouverture sur une ancre quand le clic vient de Twitter/t.co -->
-  <script>
-    (function () {
-      var ref = document.referrer || "";
-      var fromTwitter = /(t\.co|twitter\.com)/i.test(ref);
-      if (fromTwitter && location.hash) {
-        history.replaceState(null, "", location.pathname + location.search);
-        window.scrollTo(0, 0);
+<!-- Neutralise les ancres quand l'ouverture vient d'un webview -->
+<script>
+(function () {
+  var ua = navigator.userAgent || "";
+
+  var isInAppWebView = /Twitter|X\/|X for iPhone|X for iPad|X for Android|TwitterAndroid|FBAN|FBAV|Instagram|Line/i.test(ua);
+
+  function clearHashToTop() {
+    if (location.hash) {
+      history.replaceState(null, "", location.pathname + location.search);
+      window.scrollTo(0, 0);
+    }
+  }
+  var ref = document.referrer || "";
+  var fromSocialHashy = /(t\.co|twitter\.com|x\.com|mobile\.twitter\.com|mobile\.x\.com)/i.test(ref);
+
+  if (isInAppWebView || fromSocialHashy) {
+    clearHashToTop();
+
+    window.addEventListener("pageshow", clearHashToTop);
+    window.addEventListener("hashchange", function(){ setTimeout(clearHashToTop, 0); });
+  } else {
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var ids = ["Identite","Curriculum-Vitae-detaille","Recherche","Publications","Enseignement","Activites","Debat-public"];
+      if (location.hash && ids.includes(location.hash.slice(1))) {
+        clearHashToTop();
       }
-    })();
-  </script>
+    });
+  }
+})();
+</script>
 
   <!-- Styles -->
   <style>
