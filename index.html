@@ -14,14 +14,14 @@
   <link rel="canonical" href="https://aimane-abdelsalam.github.io/">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Aïmane Abdelsalam">
-  <meta name="keywords" content="Aïmane Abdelsalam, économiste, économie publique, macroéconomie, finances publiques, Université de Lille, Sciences Po, LIEPP, Clersé, recherche, thèse, fiscalité, dépenses publiques">
+  <meta name="keywords" content="Aïmane Abdelsalam, économie, économie publique, macroéconomie, finances publiques, Université de Lille, Sciences Po, LIEPP, Clersé, recherche, thèse, fiscalité, dépenses publiques">
   <meta name="theme-color" content="#ffffff">
 
   <!-- Open Graph (aperçu réseaux sociaux) -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Aïmane Abdelsalam">
-  <meta property="og:title" content="Aïmane Abdelsalam — économiste">
+  <meta property="og:title" content="Aïmane Abdelsalam — économie">
   <meta property="og:description" content="Économie publique, macroéconomie, finances publiques — Université de Lille (Clersé) & LIEPP (Sciences Po).">
   <meta property="og:url" content="https://aimane-abdelsalam.github.io/">
   <meta property="og:image" content="https://aimane-abdelsalam.github.io/assets/photo.png">
@@ -70,39 +70,6 @@
     ]
   }
   </script>
-
-<!-- Neutralise les ancres quand l'ouverture vient d'un webview -->
-<script>
-(function () {
-  var ua = navigator.userAgent || "";
-
-  var isInAppWebView = /Twitter|X\/|X for iPhone|X for iPad|X for Android|TwitterAndroid|FBAN|FBAV|Instagram|Line/i.test(ua);
-
-  function clearHashToTop() {
-    if (location.hash) {
-      history.replaceState(null, "", location.pathname + location.search);
-      window.scrollTo(0, 0);
-    }
-  }
-  var ref = document.referrer || "";
-  var fromSocialHashy = /(t\.co|twitter\.com|x\.com|mobile\.twitter\.com|mobile\.x\.com)/i.test(ref);
-
-  if (isInAppWebView || fromSocialHashy) {
-    clearHashToTop();
-
-    window.addEventListener("pageshow", clearHashToTop);
-    window.addEventListener("hashchange", function(){ setTimeout(clearHashToTop, 0); });
-  } else {
-
-    document.addEventListener("DOMContentLoaded", function () {
-      var ids = ["Identite","Curriculum-Vitae-detaille","Recherche","Publications","Enseignement","Activites","Debat-public"];
-      if (location.hash && ids.includes(location.hash.slice(1))) {
-        clearHashToTop();
-      }
-    });
-  }
-})();
-</script>
 
   <!-- Styles -->
   <style>
